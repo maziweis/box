@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "金太阳资源盒子";
+    List<Book> books = Fz.Common.Caches.GetCache("Books") as List<Book>;
+    List<int> editionIds = null;
+    if (books != null)
+    {
+        editionIds = books.Where(w => w.SubjectID == ViewBag.Subject).OrderBy(o => o.EditionID).Select(s => s.EditionID).Distinct().ToList();
+    }
+}
+@foreach (var e in editionIds)
+{
+    var eName = FzBox.Dict.Edition.GetVal(e);
+    <div class="moduleBox">
+
+        <h3>@eName</h3>
+        <div class="line"></div>
+        <ul>
+
+            @foreach (var book in books.Where(w => w.SubjectID == ViewBag.Subject && w.EditionID == e))
+            {
+                var _src = string.Format("~/Resources/Course/{0}/Course.gif", book.DirectoryName);
+                <li>
+                    <a href="@Url.Action("Book",new { s = ViewBag.Subject, id = book.CourseKey })">
+                        <img src="@Url.Content(_src)">
+                        <p>@book.ClassName</p>
+                    </a>
+                </li>
+            }
+
+        </ul>
+        <div class="clear"></div>
+    </div>
+}

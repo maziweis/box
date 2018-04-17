@@ -1,0 +1,119 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    List<Resources> _listfile = (List<Resources>)ViewData["listfile"];
+    List<C_E> _listbookedition = Fz.Common.Caches.GetCache("BookEdition") as List<C_E>;
+    List<BookCatalogs> _listcata = Fz.Common.Caches.GetCache("BookCata") as List<BookCatalogs>;
+    List<C_E> _listdn = Fz.Common.Caches.GetCache("DirectoryName") as List<C_E>;
+}
+@model VM_Res
+<div class="panelBox">
+    <div class="panel-header">
+        <div class="bookinfo panel-left">
+            <p>义务教育教科书<br />@(_listbookedition.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name.Split('_')[0])</p>
+            <p>@(_listbookedition.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name.Split('_')[1])</p>
+        </div>
+        <div class="recinfo panel-right">
+            <h1>备课资源</h1>
+            <span class="seachBox"><input type="text" id="con" placeholder="请输入关键字" value="@(Model.conditions)" /><button id="sea"></button></span>
+        </div>
+    </div>
+    <div class="panel-body searchBody">
+        <div class="container">
+            <div class="recList">
+                @if (_listfile != null && _listfile.Count > 0)
+                {
+                    var _listParent = _listcata.Where(_ => _.BookId == Model.book_id && _.PId == "0").OrderBy(_ => Convert.ToInt32(_.Sort)).Select(s => s.CatalogId).ToList();
+                    <table>
+                        <thead>
+                            <tr>
+                                <th width="100">类型</th>
+                                <th>资源名称</th>
+                                <th>资源信息</th>
+                                <th width="100">预览</th>
+                                <th width="100">保存</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in _listfile)
+                            {
+                                string _fileurl = "/Resources/Course/" + _listdn.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name + "/Applications/KingsunFiles/" + item.Url.Replace("\\", "/") + "/" + item.ResId + "." + item.Extension;
+                                string _downfile = _fileurl;
+                                string _filename = item.ResId + "." + item.Extension;
+                                if (item.Extension == "mp4" || item.Extension == "flv" || item.Extension == "mp3" || item.Extension == "swf")
+                                {
+                                    bool _retu = false;
+                                    //bool _retu = FzBox.Web.BLL.FileHelper.DecryptFile(Server.MapPath(_fileurl), Server.MapPath("/Resources/DecFile/" + _filename));
+                                    if (_retu)
+                                    {
+                                        _fileurl = "/Resources/DecFile/" + _filename;
+                                    }
+
+                                }
+                                var catalog = "";
+                                if (item.ParentID != "0")
+                                {
+                                    catalog = _listParent.Contains(item.ParentID) ? item.Catalog1 : item.ParentID;
+                                }
+                                else {
+                                    catalog = item.Catalog1;
+                                }
+                                <tr>
+                                    <td><em class="recIcon @(item.Extension)"></em></td>
+                                    <td>@item.Title</td>
+                                    <td>@(_listcata.Where(_ => _.CatalogId == catalog).FirstOrDefault().CatalogName)</td>
+                                    <td>
+                                        @if (FzBox.Dict.FileType.GetId(item.Extension) == 0)
+                                        {
+                                            <button class="btn btnView" onclick="openDialog('@item.Extension','@_fileurl')"></button>
+                                        }
+                                    </td>
+                                    @*<td><a class="btn btnSave" download="" href="@(_downfile)"></a></td>*@
+                                    <td><a class="btn btnSave" download="" onclick="downFile('@item.Title.Replace("'","*").Replace("'","*")','@_downfile')"></a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="searchNone">
+                        <a class="go" href="#">返回</a>
+                    </div>
+                }
+
+
+            </div>
+            <a class="bottomBtn reback go" href="#"></a>
+        </div>
+    </div>
+
+</div>
+<script src="@Url.Content("/Content/Tools/AudioPlayer/js/audioplayer.min.js")"></script>
+<script src="@Url.Content("/Content/Tools/jwplayer/jwplayer.js")"></script>
+<script src="@Url.Content("/Content/Tools/jPlayer/jquery.jplayer.min.js")"></script>
+<script src="@Url.Content("/Script/LessonRes/Lesson.js")"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#sea").click(function () {
+            window.location.href = "/LessonRes/QueryResult?book_id=" +@(Model.book_id) +"&catalog_id=" + @(Model.catalog_id)  + "&type_id=" + @(Model.type_id) + "&conditions=" + $("#con").val()+ "&kidcatalog_id=" + @(Model.kidcatalog_id == null ? "-1" : Model.kidcatalog_id);
+        });
+
+        $(".go").click(function () {
+            window.location.href = "/LessonRes/Index?book_id=" +@(Model.book_id) +"&catalog_id=" + @(Model.catalog_id)  + "&type_id=" + @(Model.type_id) + "&conditions=" + $("#con").val()+ "&kidcatalog_id=" + @(Model.kidcatalog_id==null?"-1": Model.kidcatalog_id);
+        });
+        document.onkeydown = function (event) {
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            if (e && e.keyCode == 13) { // 按 Enter 
+                $("#sea").click();
+            }
+        }
+    });
+</script>
+<!--[if lt IE 9]>
+        <script>
+     $(function () {
+                $(".recList table tbody tr:odd").css("background-color","#faeaa4");
+                $(".recList table tbody tr:even").css("background-color","#fdf4cd");
+     });
+        </script>
+        <![endif]-->

@@ -1,0 +1,774 @@
+﻿@charset "UTF-8";
+/* line 5, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 2, ../sass/LessonIE.scss */
+input,
+a,
+button,
+textarea {
+  outline: none;
+  text-decoration: none;
+}
+
+/* line 18, ../sass/LessonIE.scss */
+html {
+  font-size: 100%;
+}
+
+/* line 21, ../sass/LessonIE.scss */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/*滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等。*/
+/* line 25, ../sass/LessonIE.scss */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/*滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*/
+/* line 29, ../sass/LessonIE.scss */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*/
+/* line 33, ../sass/LessonIE.scss */
+::-webkit-scrollbar-track-piece {
+  display: none;
+}
+
+/*内层轨道，滚动条中间部分（除去）。*/
+/* line 37, ../sass/LessonIE.scss */
+::-webkit-scrollbar-thumb {
+  background: #d7e17d;
+  border-radius: 6px;
+  border: 1px #bfdb82 solid;
+}
+
+/*滚动条里面可以拖动的那部分*/
+/* 边角*/
+/* line 46, ../sass/LessonIE.scss */
+.layoutBody {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url("../img/bg.png") no-repeat center;
+  background-size: 100%;
+  font-family: "微软雅黑";
+}
+
+/* line 56, ../sass/LessonIE.scss */
+.panelBox {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  bottom: 10px;
+  width: 1000px;
+  margin-left: -500px;
+  padding: 20px 0;
+  border: 1px #507c22 solid;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: url("../img/IElt8/backLinear.png") repeat-x;
+}
+
+/* line 69, ../sass/LessonIE.scss */
+.panel-header,
+.panel-body {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 20px;
+}
+
+/* line 77, ../sass/LessonIE.scss */
+.panel-header {
+  margin-bottom: 20px;
+}
+
+/* line 80, ../sass/LessonIE.scss */
+.panel-left {
+  width: 20%;
+  max-width: 200px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 86, ../sass/LessonIE.scss */
+.panel-right {
+  width: 79%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 92, ../sass/LessonIE.scss */
+.bookinfo p {
+  color: #416519;
+  font-size: 16px;
+  text-align: center;
+  line-height: 1.2;
+}
+/* line 97, ../sass/LessonIE.scss */
+.bookinfo p + p {
+  margin-top: 8px;
+}
+
+/* line 102, ../sass/LessonIE.scss */
+.recinfo {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+/* line 108, ../sass/LessonIE.scss */
+.recinfo h1 {
+  height: 38px;
+  width: 176px;
+  background: url("../img/title.png") no-repeat center;
+  background-size: contain;
+  text-indent: -99em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* line 120, ../sass/LessonIE.scss */
+.seachBox {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  vertical-align: middle;
+  background: url("../img/IElt8/searchBox.png") no-repeat center;
+  float: right;
+}
+/* line 129, ../sass/LessonIE.scss */
+.seachBox input[type="text"] {
+  height: 18px;
+  line-height: 18px;
+  width: 126px;
+  padding: 0 10px;
+  font-size: 14px;
+  vertical-align: middle;
+  margin-left: 20px;
+  background: transparent;
+  border: none;
+}
+/* line 142, ../sass/LessonIE.scss */
+.seachBox button {
+  padding: 0;
+  vertical-align: middle;
+  margin-left: 0;
+  border: none;
+  height: 40px;
+  width: 36px;
+  background: none;
+  cursor: pointer;
+}
+/* line 151, ../sass/LessonIE.scss */
+.seachBox button:active, .seachBox button:hover {
+  opacity: 0.8;
+}
+
+/* line 157, ../sass/LessonIE.scss */
+.panel-body {
+  position: relative;
+  height: 98%;
+}
+/* line 160, ../sass/LessonIE.scss */
+.panel-body .nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 100px;
+  height: 567px;
+  background: url("../img/IElt8/navBack.png") no-repeat center top;
+}
+/* line 167, ../sass/LessonIE.scss */
+.panel-body .nav ul {
+  box-sizing: border-box;
+  padding: 40px 8px;
+  margin: 8px;
+  height: 82%;
+  overflow-y: auto;
+}
+/* line 175, ../sass/LessonIE.scss */
+.panel-body .nav ul li a {
+  cursor: pointer;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: #416519;
+  border-top: 2px #ced893 dashed;
+  padding-left: 10px;
+}
+/* line 187, ../sass/LessonIE.scss */
+.panel-body .nav ul li a:before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("../img/navLi.png") no-repeat center;
+  background-size: 100%;
+  margin-right: 10px;
+}
+/* line 197, ../sass/LessonIE.scss */
+.panel-body .nav ul li:last-child {
+  border-bottom: 2px #ced893 dashed;
+}
+/* line 203, ../sass/LessonIE.scss */
+.panel-body .nav ul li.on > a, .panel-body .nav ul li.on:hover > a {
+  background: url("../img/IElt8/navOn.png") repeat-y center;
+}
+/* line 209, ../sass/LessonIE.scss */
+.panel-body .nav ul li:hover > a {
+  background: url("../img/IElt8/navHover.png") repeat-y center;
+}
+/* line 215, ../sass/LessonIE.scss */
+.panel-body .nav ul li ol li a {
+  padding-left: 20px;
+}
+/* line 217, ../sass/LessonIE.scss */
+.panel-body .nav ul li ol li a:before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  background: url("../img/navLi-li.png") no-repeat center;
+  background-size: 100%;
+}
+/* line 225, ../sass/LessonIE.scss */
+.panel-body .nav ul li ol li:last-child {
+  border-bottom: none;
+}
+/* line 232, ../sass/LessonIE.scss */
+.panel-body .nav ul > li > a {
+  font-size: 18px;
+}
+/* line 238, ../sass/LessonIE.scss */
+.panel-body .container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 100px;
+  background: #fdf4cd url("../img/IElt8/listBack.png") no-repeat center top;
+}
+/* line 244, ../sass/LessonIE.scss */
+.panel-body .container .tabBox {
+  padding-top: 16px;
+}
+/* line 246, ../sass/LessonIE.scss */
+.panel-body .container .tabBox ul {
+  padding: 0 5px;
+}
+/* line 248, ../sass/LessonIE.scss */
+.panel-body .container .tabBox ul li {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  font-size: 16px;
+  width: 80px;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  color: #fff;
+  background: url("../img/IElt8/type.png") no-repeat;
+  background-size: 100% 100%;
+}
+/* line 260, ../sass/LessonIE.scss */
+.panel-body .container .tabBox ul li + li {
+  margin-left: 10px;
+}
+/* line 263, ../sass/LessonIE.scss */
+.panel-body .container .tabBox ul li.on, .panel-body .container .tabBox ul li:hover {
+  color: #603710;
+  background-image: url("../img/IElt8/type_hover.png");
+}
+/* line 271, ../sass/LessonIE.scss */
+.panel-body .container .recList {
+  background-color: #ffffff;
+  position: absolute;
+  top: 54px;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow-y: auto;
+}
+/* line 279, ../sass/LessonIE.scss */
+.panel-body .container .recList ul {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+/* line 285, ../sass/LessonIE.scss */
+.panel-body .container .recList li {
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  margin-left: 2.4%;
+  margin-bottom: 50px;
+  width: 22%;
+}
+/* line 295, ../sass/LessonIE.scss */
+.panel-body .container .recList li .imgBox {
+  padding: 16px 0;
+  width: 100%;
+  display: block;
+  background-color: #f8efcd;
+  margin-bottom: 10px;
+}
+/* line 301, ../sass/LessonIE.scss */
+.panel-body .container .recList li .imgBox img {
+  width: 158px;
+  height: 118.5px;
+}
+/* line 306, ../sass/LessonIE.scss */
+.panel-body .container .recList li p {
+  color: #4e2d0c;
+  font-size: 15px;
+  line-height: 1.5;
+  height: 42px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+/* line 316, ../sass/LessonIE.scss */
+.panel-body .container .recList li .btnGroup {
+  display: none;
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  text-align: center;
+}
+/* line 322, ../sass/LessonIE.scss */
+.panel-body .container .recList li .btnGroup .recBtn {
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  display: inline-block;
+  background: url("../img/btn.png") no-repeat center;
+  text-align: center;
+  font-size: 14px;
+  color: #fff;
+}
+/* line 333, ../sass/LessonIE.scss */
+.panel-body .container .recList li .btnGroup .recBtn + .recBtn {
+  margin-left: 10px;
+}
+/* line 337, ../sass/LessonIE.scss */
+.panel-body .container .recList li .btnGroup .recBtn.prev:before {
+  content: '预览';
+}
+/* line 342, ../sass/LessonIE.scss */
+.panel-body .container .recList li .btnGroup .recBtn.save:before {
+  content: '保存';
+}
+/* line 349, ../sass/LessonIE.scss */
+.panel-body .container .recList li:hover .btnGroup {
+  display: block;
+}
+/* line 357, ../sass/LessonIE.scss */
+.panel-body .container .bottomBtn {
+  position: absolute;
+  border: none;
+  display: block;
+  bottom: -18px;
+  right: 5px;
+  width: 72px;
+  height: 47px;
+}
+/* line 365, ../sass/LessonIE.scss */
+.panel-body .container .bottomBtn.resizescreen {
+  background: url("../img/full.png") no-repeat center;
+  background-size: contain;
+}
+/* line 368, ../sass/LessonIE.scss */
+.panel-body .container .bottomBtn.resizescreen.exitFull {
+  background-image: url("../img/exitfull.png");
+}
+/* line 372, ../sass/LessonIE.scss */
+.panel-body .container .bottomBtn.reback {
+  background: url("../img/goback.png") no-repeat center;
+  background-size: contain;
+}
+/* line 376, ../sass/LessonIE.scss */
+.panel-body .container .bottomBtn:hover {
+  right: 5px;
+  width: 72px;
+  height: 47px;
+}
+
+/* line 384, ../sass/LessonIE.scss */
+.searchBody {
+  margin: 0 8px;
+}
+/* line 386, ../sass/LessonIE.scss */
+.searchBody .container {
+  width: 100%;
+  background: #faeaa4 url("../img/IElt8/listBackS.png") no-repeat center top;
+}
+/* line 389, ../sass/LessonIE.scss */
+.searchBody .container .recList {
+  top: 8px;
+  bottom: 46px;
+}
+/* line 392, ../sass/LessonIE.scss */
+.searchBody .container .recList table {
+  width: 100%;
+}
+/* line 395, ../sass/LessonIE.scss */
+.searchBody .container .recList table thead tr {
+  background-color: #faeaa4;
+}
+/* line 399, ../sass/LessonIE.scss */
+.searchBody .container .recList table td,
+.searchBody .container .recList table th {
+  height: 40px;
+  color: #90521c;
+  font-size: 16px;
+  text-align: center;
+}
+/* line 405, ../sass/LessonIE.scss */
+.searchBody .container .recList table td:first-child, .searchBody .container .recList table td:last-child, .searchBody .container .recList table td:nth-last-child(2),
+.searchBody .container .recList table th:first-child,
+.searchBody .container .recList table th:last-child,
+.searchBody .container .recList table th:nth-last-child(2) {
+  text-align: center;
+}
+/* line 412, ../sass/LessonIE.scss */
+.searchBody .container .recList table tbody tr:nth-of-type(odd) {
+  background-color: #fdf4cd;
+}
+/* line 415, ../sass/LessonIE.scss */
+.searchBody .container .recList table tbody tr:nth-of-type(even) {
+  background-color: #faeaa4;
+}
+/* line 419, ../sass/LessonIE.scss */
+.searchBody .container .recList table .btn {
+  display: inline-block;
+  width: 48px;
+  height: 27px;
+  border: none;
+  cursor: pointer;
+}
+/* line 425, ../sass/LessonIE.scss */
+.searchBody .container .recList table .btn.btnView {
+  background: url("../img/view.png") no-repeat center;
+  background-size: contain;
+}
+/* line 429, ../sass/LessonIE.scss */
+.searchBody .container .recList table .btn.btnSave {
+  background: url("../img/save.png") no-repeat center;
+  background-size: contain;
+}
+/* line 433, ../sass/LessonIE.scss */
+.searchBody .container .recList table .btn:hover {
+  background-color: rgba(51, 51, 51, 0.1);
+}
+/* line 438, ../sass/LessonIE.scss */
+.searchBody .container .recList .searchNone {
+  position: absolute;
+  left: 50%;
+  width: 283px;
+  margin-left: -142px;
+  height: 100%;
+  background: url("../img/none.png") no-repeat center;
+}
+/* line 445, ../sass/LessonIE.scss */
+.searchBody .container .recList .searchNone a {
+  position: absolute;
+  display: block;
+  width: 100%;
+  bottom: 10%;
+  color: #a42116;
+  font-size: 18px;
+  text-align: center;
+}
+/* line 455, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon {
+  display: inline-block;
+  width: 20px;
+  height: 26px;
+  background: url("../img/defaultS.png") no-repeat center;
+  background-size: contain;
+}
+/* line 463, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.png, .searchBody .container .recList .recIcon.jpg, .searchBody .container .recList .recIcon.jpeg, .searchBody .container .recList .recIcon.gif {
+  background: url("../img/img.png") no-repeat center;
+  background-size: contain;
+}
+/* line 467, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.swf {
+  background: url("../img/flash.png") no-repeat center;
+  background-size: contain;
+}
+.searchBody .container .recList .recIcon.zip, .searchBody .container .recList .recIcon.rar{
+  background: url("../img/IElt8/zipS.png") no-repeat center;
+  background-size: contain;
+}
+/* line 471, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.mp3, .searchBody .container .recList .recIcon.ogg, .searchBody .container .recList .recIcon.wav {
+  background: url("../img/audio.png") no-repeat center;
+  background-size: contain;
+}
+/* line 475, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.doc, .searchBody .container .recList .recIcon.docx {
+  background: url("../img/wordIcon.png") no-repeat center;
+  background-size: contain;
+  width: 24px;
+}
+/* line 480, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.ppt, .searchBody .container .recList .recIcon.pptx {
+  background: url("../img/pptIcon.png") no-repeat center;
+  background-size: contain;
+  width: 24px;
+}
+/* line 485, ../sass/LessonIE.scss */
+.searchBody .container .recList .recIcon.mp4, .searchBody .container .recList .recIcon.flv {
+  background: url("../img/videoIcon.png") no-repeat center;
+  background-size: contain;
+  width: 24px;
+}
+
+/* line 495, ../sass/LessonIE.scss */
+html.fullscreen, html:fullscreen, html:-webkit-full-screen {
+  font-size: 70%;
+}
+/* line 499, ../sass/LessonIE.scss */
+html.fullscreen .panelBox, html:fullscreen .panelBox, html:-webkit-full-screen .panelBox {
+  width: 104rem;
+}
+/* line 504, ../sass/LessonIE.scss */
+html.fullscreen .panel-body .container .resizescreen, html:fullscreen .panel-body .container .resizescreen, html:-webkit-full-screen .panel-body .container .resizescreen {
+  background-image: url("../img/exitfull.png");
+}
+
+/* line 511, ../sass/LessonIE.scss */
+.backshadow {
+  background-color: #333;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+/* line 520, ../sass/LessonIE.scss */
+.backshadow .dialogBox {
+  position: absolute;
+  width: 700px;
+  height: 608px;
+  left: 50%;
+  top: 50%;
+  margin: -304px 0 0 -350px;
+  background: url("../img/IElt8/dialog.png") no-repeat;
+}
+/* line 530, ../sass/LessonIE.scss */
+.backshadow .dialogBox .close {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  right: 6px;
+  top: 6px;
+  width: 40px;
+  height: 40px;
+  background: url("../img/IElt8/close.png") no-repeat center;
+  background-size: contain;
+}
+/* line 542, ../sass/LessonIE.scss */
+.backshadow .dialogBox .close:hover {
+  background-image: url("../img/IElt8/close_hover.png");
+}
+/* line 546, ../sass/LessonIE.scss */
+.backshadow .dialogBox .dialogContent {
+  position: absolute;
+  background-color: #ffffff;
+  left: 23px;
+  right: 25px;
+  top: 55px;
+  bottom: 64px;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: space-around;
+  text-align: center;
+}
+/* line 559, ../sass/LessonIE.scss */
+.backshadow .dialogBox .dialogContent img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/* line 563, ../sass/LessonIE.scss */
+.backshadow .dialogBox .dialogContent .video {
+  width: 100%;
+  height: 100%;
+}
+/* line 566, ../sass/LessonIE.scss */
+.backshadow .dialogBox .dialogContent .video video {
+  width: 100%;
+}
+/* line 572, ../sass/LessonIE.scss */
+.backshadow .audioBox {
+  width: 360px;
+  height: 90px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -45px 0 0 -180px;
+  background-color: #fafafa;
+  border: 1px #ffffff solid;
+}
+/* line 582, ../sass/LessonIE.scss */
+.backshadow .audioBox .dialogContent {
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+/* line 588, ../sass/LessonIE.scss */
+.backshadow .audioBox .dialogContent audio {
+  position: absolute;
+  left: 50%;
+}
+/* line 592, ../sass/LessonIE.scss */
+.backshadow .audioBox .dialogContent embed {
+  margin-top: 25px;
+}
+/* line 596, ../sass/LessonIE.scss */
+.backshadow .audioBox .close {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  right: 8px;
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  background: url("../img/IElt8/closeAudio.png") no-repeat center;
+  background-size: contain;
+}
+/* line 608, ../sass/LessonIE.scss */
+.backshadow .audioBox .close:hover {
+  background-image: url("../img/IElt8/closeAudio_hover.png");
+}
+/* line 612, ../sass/LessonIE.scss */
+.backshadow .audioBox:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30%;
+}
+/* line 619, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+/* line 631, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer-volume-adjust {
+  background: none;
+  box-shadow: none;
+}
+/* line 639, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer-bar-loaded, .backshadow .audioBox .audioplayer-volume-adjust > div {
+  background: #225577;
+}
+/* line 645, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer-playpause, .backshadow .audioBox .audioplayer-playpause:hover, .backshadow .audioBox .audioplayer-playpause:focus, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause:hover, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause:focus, .backshadow .audioBox .audioplayer-volume, .backshadow .audioBox .audioplayer-volume:hover, .backshadow .audioBox .audioplayer-volume:focus {
+  border: 1px #ffffff solid;
+}
+/* line 649, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer-time-current, .backshadow .audioBox .audioplayer-time-duration {
+  border: none;
+}
+/* line 652, ../sass/LessonIE.scss */
+.backshadow .audioBox .audioplayer-volume a {
+  filter: none;
+}

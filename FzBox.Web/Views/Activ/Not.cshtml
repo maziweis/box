@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+@model VM_Activ
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>您的系统未激活</title>
+</head>
+<body>
+    <div>
+        <h1>您的系统未激活！【<span>@FzBox.Web.BLL.Common.GetMac()</span>】</h1>
+    </div>
+    <div>
+        @using (Html.BeginForm("Not", "Activ", FormMethod.Post, new { @id = "form1" }))
+        {
+            @Html.TextBoxFor(m => m.Code, new { @placeholder = "请输入激活码", @autocomplete = "off", style = "width:500px;" })
+            @Html.ValidationMessageFor(m => m.Code)
+            <button type="submit">激活</button>
+        }
+    </div>
+</body>
+</html>

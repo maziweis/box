@@ -1,0 +1,92 @@
+﻿@{
+    List<Book> books = Fz.Common.Caches.GetCache("Books") as List<Book>;
+    List<int> subjectIds = null;
+    if (books != null)
+    {
+        subjectIds = books.Select(s => s.SubjectID).Distinct().ToList();
+    }
+    bool firstSelected = true;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="chrome=1,IE=edge" />
+    <meta name="renderer" content="webkit|ie-stand" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="@Url.Content("/Content/Styles/default/css/page.css")" />
+    <!--[if lt IE 8]>
+    <script>
+        alert("浏览器版本太低，建议更新浏览器或使用谷歌浏览器查看。");
+        window.location.href="http://www.google.cn/chrome/browser/desktop/"
+    </script>
+    <![endif]-->
+
+</head>
+<body>
+    <div class="wrap">
+        <div class="mainBody">
+            @if (subjectIds == null || subjectIds.Count <= 0)
+            {
+                <span>暂时没有任何资源</span>
+                @RenderBody()
+            }
+            else
+            {
+                <div class="header">
+                    <div class="head">
+                        <ul>
+                            @foreach (var s in FzBox.Dict.Subject.Get())
+                            {
+                                if (subjectIds.Contains(s.Key))
+                                {
+                                    if (ViewBag.Subject != null && ViewBag.Subject != 0)
+                                    {
+                                        if (s.Key == ViewBag.Subject)
+                                        {
+                                            <li class="on"><a href="@Url.Action("Index", new { s = s.Key })">@s.Value</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("Index",new { s = s.Key })">@s.Value</a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (firstSelected)
+                                        {
+                                            firstSelected = false;
+                                            <li class="on"><a href="@Url.Action("Index", new { s = s.Key })">@s.Value</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@Url.Action("Index",new { s = s.Key })">@s.Value</a></li>
+                                        }
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content">
+                    @RenderBody()
+                </div>
+            }
+            </div>
+                <div class="footer">
+                    <span>服务热线</span><span>Tel：400-111-8180</span><span>&copy;&nbsp;&nbsp;2017 深圳市方直科技股份有限公司@*&nbsp;&nbsp;&nbsp;&nbsp;版本：v @FzBox.Web.BLL.Common.GetVersion()*@</span>
+                </div>
+
+            </div>
+
+    <script src="@Url.Content("/Content/Tools/jquery/jquery-1.10.2.min.js")"></script>
+    <script src="@Url.Content("/Content/Js/common.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            fixedFoot();
+        })
+    </script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

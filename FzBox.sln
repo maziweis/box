@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.Web", "FzBox.Web\FzBox.Web.csproj", "{1DD0567B-487A-4F9B-A25B-B518DF6B96F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.Implement", "FzBox.Implement\FzBox.Implement.csproj", "{1BC02218-2966-4013-A4CC-B122356593C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.Dict", "FzBox.Dict\FzBox.Dict.csproj", "{E9ABFF38-029F-4518-B05C-73C1EBEBE913}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.WindowsService", "FzBox.WindowsService\FzBox.WindowsService.csproj", "{3D3DE99F-DF82-4257-A2B0-232767E04948}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.OperationLog", "FzBox.OperationLog\FzBox.OperationLog.csproj", "{50CD17D7-0CCC-41F1-B646-C637B9DF21D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.ClearData", "FzBox.ClearData\FzBox.ClearData.csproj", "{5492E64B-F2A1-4EE3-864A-4701322A97DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FzBox.AutoUpdate", "FzBox.AutoUpdate\FzBox.AutoUpdate.csproj", "{F55E3A3E-7172-47C5-821E-432213C58EAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1DD0567B-487A-4F9B-A25B-B518DF6B96F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD0567B-487A-4F9B-A25B-B518DF6B96F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD0567B-487A-4F9B-A25B-B518DF6B96F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD0567B-487A-4F9B-A25B-B518DF6B96F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BC02218-2966-4013-A4CC-B122356593C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BC02218-2966-4013-A4CC-B122356593C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BC02218-2966-4013-A4CC-B122356593C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BC02218-2966-4013-A4CC-B122356593C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9ABFF38-029F-4518-B05C-73C1EBEBE913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9ABFF38-029F-4518-B05C-73C1EBEBE913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9ABFF38-029F-4518-B05C-73C1EBEBE913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9ABFF38-029F-4518-B05C-73C1EBEBE913}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D3DE99F-DF82-4257-A2B0-232767E04948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D3DE99F-DF82-4257-A2B0-232767E04948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D3DE99F-DF82-4257-A2B0-232767E04948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D3DE99F-DF82-4257-A2B0-232767E04948}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50CD17D7-0CCC-41F1-B646-C637B9DF21D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50CD17D7-0CCC-41F1-B646-C637B9DF21D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50CD17D7-0CCC-41F1-B646-C637B9DF21D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50CD17D7-0CCC-41F1-B646-C637B9DF21D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5492E64B-F2A1-4EE3-864A-4701322A97DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5492E64B-F2A1-4EE3-864A-4701322A97DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5492E64B-F2A1-4EE3-864A-4701322A97DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5492E64B-F2A1-4EE3-864A-4701322A97DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F55E3A3E-7172-47C5-821E-432213C58EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F55E3A3E-7172-47C5-821E-432213C58EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F55E3A3E-7172-47C5-821E-432213C58EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F55E3A3E-7172-47C5-821E-432213C58EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,302 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+    List<BookCatalogs> _listcata = Fz.Common.Caches.GetCache("BookCata") as List<BookCatalogs>;
+    List<BookCatalogs> _listParent = (List<BookCatalogs>)ViewData["listParent"];
+    List<Resources> _listfile = (List<Resources>)ViewData["listfile"];
+    Dictionary<int, string> _dic = FzBox.Dict.ResType.Get();
+    List<C_E> _listbookedition = Fz.Common.Caches.GetCache("BookEdition") as List<C_E>;
+    List<C_E> _listdn = Fz.Common.Caches.GetCache("DirectoryName") as List<C_E>;
+
+}
+@model VM_Res
+<div class="panelBox">
+    <div class="panel-header">
+        <div class="bookinfo panel-left">
+            <p>义务教育教科书<br />@(_listbookedition.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name.Split('_')[0])</p>
+            <p>@(_listbookedition.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name.Split('_')[1])</p>
+        </div>
+        <div class="recinfo panel-right">
+            <h1>备课资源</h1>
+            <span class="seachBox"><input id="con" type="text" placeholder="请输入关键字" value="" /><button id="sea"></button></span>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div class="nav panel-left">
+            <ul>
+                @foreach (var item in _listParent)
+                {
+                    string cla = string.Empty;
+                    if (item.CatalogId == Model.catalog_id)
+                    {
+                        cla = "on";
+                    }
+
+                    <li CatalogId="@(item.CatalogId)" class="@cla">
+                        <a onclick="Query('@(item.CatalogId)','')">@item.CatalogName</a>
+                        @{
+                            var _li = _listcata.Where(_ => _.PId == item.CatalogId).ToList();
+                            if (_li.Count > 0)
+                            {
+                                <ol>
+                                    @foreach (var i in _li)
+                                    {
+                                        string kidcla = string.Empty;
+                                        if (i.CatalogId == Model.kidcatalog_id)
+                                        {
+                                            kidcla = "on";
+                                        }
+
+                                        <li kidcatalog_id="@(i.CatalogId)" class="@kidcla">
+                                            <a onclick="Query('@(item.CatalogId)', '@(i.CatalogId)')">@i.CatalogName</a>
+                                        </li>
+                                    }
+                                </ol>
+                            }
+                        }
+                    </li>
+                            }
+            </ul>
+        </div>
+        <div class="container panel-right">
+            <div class="tabBox">
+                <ul class="tabList">
+                    @foreach (var item in _dic)
+                    {
+                        foreach (var it in Model.listType)
+                        {
+                            if (item.Key == it)
+                            {
+                                string _cla = "tabItem";
+                                if (item.Key == int.Parse(Model.type_id))
+                                {
+                                    _cla = "tabItem on";
+                                }
+
+                                <li type_id="@(item.Key)" onclick="QueryType('@(item.Key)')" class="@_cla">@item.Value</li>
+                            }
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="recList">
+                @if (_listfile.Count() > 0)
+                {
+                <ul>
+                    @if (_listfile.Count() > 0)
+                    {
+                        foreach (var item in _listfile)
+                        {
+                            string _url = string.Empty;
+                            if (string.IsNullOrEmpty(item.Cover))
+                            {
+                                if (item.Extension == "doc" || item.Extension == "docx")
+                                {
+                                    _url = "/Content/Styles/default/img/word.png";
+                                }
+                                else if (item.Extension == "ppt" || item.Extension == "pptx")
+                                {
+                                    _url = "/Content/Styles/default/img/ppt.png";
+                                }
+                                else if (item.Extension == "mp3")
+                                {
+                                    _url = "/Content/Styles/default/img/sound.png";
+                                }
+                                else if (item.Extension == "zip"|| item.Extension == "rar")
+                                {
+                                    _url = "/Content/Styles/default/img/zip.png";
+                                }
+                                else
+                                {
+                                    _url = "/Content/Styles/default/img/default.png";
+                                }
+                            }
+                            else
+                            {
+                                _url = "/Resources/Course/" + item.Cover;
+                            }
+                            if (item.ResourceStyle == "5")
+                            {
+                                if (item.Extension == "mp3")
+                                {
+                                    _url = "/Content/Styles/default/img/sound.png";
+                                }
+                                else
+                                {
+                                    _url = "/Content/Styles/default/img/zip.png";
+                                }
+                            }
+
+                            string _fileurl = "/Resources/Course/" + _listdn.Where(_ => _.ID == Model.book_id).FirstOrDefault().Name + "/Applications/KingsunFiles/" + item.Url.Replace("\\", "/") + "/" + item.ResId + "." + item.Extension;
+                            string _downfile = _fileurl;
+                            string _filename = item.ResId + "." + item.Extension;
+                            if (item.Extension == "mp4" || item.Extension == "flv" || item.Extension == "mp3" || item.Extension == "swf")
+                            {
+                                bool _retu =false;//不加密，也不用解密
+                                //bool _retu = FzBox.Web.BLL.FileHelper.DecryptFile(Server.MapPath(_fileurl), Server.MapPath("/Resources/DecFile/" + _filename));
+                                if (_retu)
+                                {
+                                    _fileurl = "/Resources/DecFile/" + _filename;
+                                }
+
+                            }
+                        <li>
+                            @if (FzBox.Dict.FileType.GetId(item.Extension) == 0)
+                            {
+                                <span class="imgBox" onclick="openDialog('@item.Extension','@_fileurl')"><img src="@_url" /></span>
+                            }
+                            else
+                            {
+                                <span class="imgBox"><img src="@_url" /></span>
+                            }                            
+                            <p>@(item.Title)</p>
+                            <div class="btnGroup">
+                                @if (FzBox.Dict.FileType.GetId(item.Extension) == 0)
+                                {
+                                    <a class="btn recBtn prev" onclick="openDialog('@item.Extension','@_fileurl')"></a>
+                                }
+                                @*<a class="btn recBtn save" download="" href="@(_downfile)" ></a>*@
+                                <a class="btn recBtn save" download="" onclick="downFile('@item.Title.Replace("'","*").Replace("'","*")','@_downfile')"></a>
+                            </div>
+                        </li>
+                        }
+                    }
+                </ul>
+                }
+                else
+                {
+                <div class="searchNone" > </div>
+                }
+                @*<div class="pagetab">
+                        <button class="btn prev" title="上一页"></button><a>1</a><a class="on">2</a><a>3</a><button class="btn next" title="下一页"></button>
+                    </div>*@@*<div class="pagetab">
+                        <button class="btn prev" title="上一页"></button><a></a><a class="on"></a><a></a><button class="btn next" title="下一页"></button>
+                    </div>*@
+                </div>
+                <button class="bottomBtn resizescreen" onclick="toggleFullScreen()"></button>
+            </div>
+        </div>
+    </div>
+    <script src="@Url.Content("/Content/Tools/AudioPlayer/js/audioplayer.min.js")"></script>
+    <script src="@Url.Content("/Content/Tools/jwplayer/jwplayer.js")"></script>
+    <script src="@Url.Content("/Content/Tools/jPlayer/jquery.jplayer.min.js")"></script>
+    <script src="@Url.Content("/Script/LessonRes/Lesson.js")"></script>
+    <script type="text/javascript">
+        window.onresize = function () {
+            if (isFullScreen()) {
+                $(".resizescreen").addClass("exitFull");
+            }
+            else {
+                $(".resizescreen").removeClass("exitFull");
+            }
+        }
+        function Query(catalog_id, kidcatalog_id) {
+            @*$.ajax({
+                type: "get",
+                contentType: "Content-Type:text/html;charse=UTF-8",
+                url: "GetCata?bookid=" +@(Model.book_id) +"&cataid=" + catalog_id + "&kidcataid=" + kidcatalog_id,
+                data: "",
+                dataType: 'text',
+                error: function (result) {//请求失败处理函数
+
+                },
+                success: function (result) {
+                    var listType = "";
+                    var filetype = ["doc", "docx", "pdf", "ppt", "pptx", "psd", "rar", "txt", "xls", "xlsx", "zip"];
+                    var data = result.split("|");
+                    $(".tabList").html("");
+                    $(".recList ul").html("");
+                    if (data[0] != "" && data[0] != null) {
+                        var list = data[1].split(",");
+                        var listhtml = ""; var cla = "on"; var reshtml = "";
+                        $.each(list, function (index, item) {
+                            var kv = item.split("_");
+                            listhtml += '<li type_id="' + kv[0] + '" onclick="QueryType(' + kv[0] + ')" class="' + cla + '>' + kv[1] + '</li>';
+                            cla = "";
+                        });
+                        $(".tabList").html(listhtml);
+                        var res = JSON.parse(data[0]);
+                        $.each(res, function (index, item) {
+                            var _url = "";
+                            if (item.Cover!=""&&item.Cover!=null)
+                            {
+                                if (item.Extension == "doc" || item.Extension == "docx")
+                                {
+                                    _url = "/Content/Styles/default/img/word.png";
+                                }
+                                else if (item.Extension == "ppt" || item.Extension == "pptx")
+                                {
+                                    _url = "/Content/Styles/default/img/ppt.png";
+                                }
+                                else if (item.Extension == "mp3")
+                                {
+                                    _url = "/Content/Styles/default/img/sound.png";
+                                }
+                                else if (item.Extension == "zip"|| item.Extension == "rar")
+                                {
+                                    _url = "/Content/Styles/default/img/zip.png";
+                                }
+                                else
+                                {
+                                    _url = "/Content/Styles/default/img/default.png";
+                                }
+                            }
+                            else
+                            {
+                                _url = "/Resources/Course/" + item.Cover;
+                            }
+                            if (item.Extension == "mp3")
+                            {
+                                _url = "/Content/Styles/default/img/sound.png";
+                            }
+
+                            var _fileurl = "/Resources/Course/" + data[2] + "/Applications/KingsunFiles/" + item.Url.replace("\\", "/").replace("\\", "/") + "/" + item.ResId + "." + item.Extension;
+                            var _downfile = _fileurl;
+                            var _filename = item.ResId + "." + item.Extension;
+                            if (item.Extension == "mp4" || item.Extension == "flv" || item.Extension == "mp3" || item.Extension == "swf")
+                            {
+                                _fileurl = "/Resources/DecFile/" + _filename;
+                            }
+                            if ($.inArray(item.Extension, filetype) > -1) {//不能打开的文件
+                                reshtml += '<li><span class="imgBox"><img src="' + _url + '" /></span>';
+                                reshtml += '<p>' + item.Title + '</p>';
+                                reshtml += '<div class="btnGroup">';
+                                reshtml += '<a class="btn recBtn save" download="" onclick="downFile(' + item.Title + ',' + _downfile + ')"></a></div></li>';
+                            }
+                        });
+                        $(".recList ul").html(reshtml);
+                    }
+                }
+            });*@
+            window.location.href = "/LessonRes/Index?book_id=" +@(Model.book_id) +"&catalog_id=" + catalog_id + "&kidcatalog_id=" + kidcatalog_id + "&conditions=" + $("#con").val();
+        }
+        function QueryType(type_id) {
+            var catalog_id = $(".nav>ul>li.on").attr("CatalogId");
+            var kidcatalog_id = $(".nav>ul>li.on>ol>li.on").attr("kidcatalog_id");
+            window.location.href = "/LessonRes/Index?book_id=" +@(Model.book_id) +"&catalog_id=" + catalog_id + "&kidcatalog_id=" + kidcatalog_id + "&type_id=" + type_id + "&conditions=" + $("#con").val();
+        }
+        $(function () {
+            $("#sea").click(function () {
+                var catalog_id = $(".nav>ul>li.on").attr("CatalogId");
+                var kidcatalog_id = $(".nav>ul>li.on>ol>li.on").attr("kidcatalog_id") == undefined ? "" : $(".nav>ul>li.on>ol>li.on").attr("kidcatalog_id");
+                var type_id = $(".tabBox>ul>li.on").attr("type_id");
+                window.location.href = "/LessonRes/QueryResult?book_id=" +@(Model.book_id) +"&catalog_id=" + catalog_id + "&kidcatalog_id=" + kidcatalog_id + "&type_id=" + type_id + "&conditions=" + $("#con").val();
+            });
+            document.onkeydown = function (event) {
+                var e = event || window.event || arguments.callee.caller.arguments[0];
+                if (e && e.keyCode == 13) { // 按 Enter
+                    $("#sea").click();
+                }
+            }
+            //Common.Ajax("TeachImplement", "GetUserInfoList", "").Data;
+        });
+        $(window).load(function () {
+            $(".nav ul").animate({ scrollTop: $(".nav ul>li.on").offset().top - $(".nav ul").offset().top }, 0);
+        })
+    </script>
+        <!--[if lt IE 9]>
+        <script>
+                $(".recList table tbody tr:odd").css("background-color","#faeaa4");
+                $(".recList table tbody tr:even").css("background-color","#fdf4cd");
+        </script>
+        <![endif]-->
+

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = string.Format("{0}-{1}", Model.EditionName, Model.BookName);
+    List<C_E> _listcourse = Fz.Common.Caches.GetCache("Course") as List<C_E>;
+    string _result = _listcourse.Where(_ => _.Name.Contains(Model.CourseKey)).FirstOrDefault() == null ? "0" : _listcourse.Where(_ => _.Name.Contains(Model.CourseKey)).FirstOrDefault().ID;
+}
+
+@model VM_Book
+
+<div class="moduleBox">
+    <h3><span>@Model.EditionName</span><span>@Model.BookName</span><a class="back" href="@Url.Action("Index", new { s = ViewBag.Subject })">返回</a></h3>
+    <div class="line"></div>
+    <div class="bookInfo">
+        <div class="coverBox">
+            <a target="_blank" href="@Url.Content(Model.Url)" onclick="ResLog('0','@Model.Edition','@Model.Subject')">
+                <img src="@Url.Content(Model.Cover)" />
+            </a>
+            <p>提示：请点击图片打开数字教材</p>
+        </div>
+        <div class="bookRec">
+            <div class="recTop">
+                <h4>教材配套</h4>
+                <ul>
+                    @foreach (var app in Model.Apps)
+                    {
+                        if (_result != "0"&& @app.Name=="备课资源")
+                        {
+                            <li><a target="_blank" href="/LessonRes/Index?book_id=@_result" onclick="ResLog('@app.AppType','@Model.Edition','@Model.Subject','@app.Name')">@app.Name</a></li>
+                        }
+                        else
+                        {
+                            <li><a target="_blank" href="@Url.Content(app.Url)" onclick="ResLog('@app.AppType','@Model.Edition','@Model.Subject','@app.Name')">@app.Name</a></li>
+                        }
+                    }
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="recBottom">
+                <a target="_blank" class="btn" href="@Url.Content(Model.Url)" onclick="ResLog('0','@Model.Edition','@Model.Subject','数字教材')">打开数字教材</a>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>

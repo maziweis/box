@@ -1,0 +1,960 @@
+﻿@charset "UTF-8";
+/* line 5, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, C:/Ruby24-x64/lib/ruby/gems/2.4.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 3, ../sass/Lesson.scss */
+input,
+a,
+button,
+textarea {
+  outline: none;
+  text-decoration: none;
+}
+
+/* line 19, ../sass/Lesson.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 22, ../sass/Lesson.scss */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/*滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等。*/
+/* line 26, ../sass/Lesson.scss */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/*滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*/
+/* line 30, ../sass/Lesson.scss */
+::-webkit-scrollbar-track {
+  display: none;
+}
+
+/*外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。*/
+/* line 34, ../sass/Lesson.scss */
+::-webkit-scrollbar-track-piece {
+  display: none;
+}
+
+/*内层轨道，滚动条中间部分（除去）。*/
+/* line 38, ../sass/Lesson.scss */
+::-webkit-scrollbar-thumb {
+  background: #d7e17d;
+  border-radius: 6px;
+  border: 1px #bfdb82 solid;
+}
+
+/*滚动条里面可以拖动的那部分*/
+/* 边角*/
+/* line 47, ../sass/Lesson.scss */
+.layoutBody {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: url("../img/bg.png") no-repeat center top;
+  background-size: 100%;
+  font-family: "微软雅黑";
+}
+
+/* line 57, ../sass/Lesson.scss */
+.panelBox {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  bottom: 10px;
+  width: 100rem;
+  padding: 2rem 0;
+  border: 0.01rem #507c22 solid;
+  box-sizing: border-box;
+  overflow: hidden;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2VjZjhhOCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzYzYTY2NiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ecf8a8), color-stop(100%, #63a666));
+  background: -moz-linear-gradient(#ecf8a8, #63a666);
+  background: -webkit-linear-gradient(#ecf8a8, #63a666);
+  background: linear-gradient(#ecf8a8, #63a666);
+  -moz-border-radius: 4rem;
+  -webkit-border-radius: 4rem;
+  border-radius: 4rem;
+}
+
+/* line 71, ../sass/Lesson.scss */
+.panel-header,
+.panel-body {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin: 0 2rem;
+}
+
+/* line 79, ../sass/Lesson.scss */
+.panel-header {
+  margin-bottom: 2rem;
+}
+
+/* line 82, ../sass/Lesson.scss */
+.panel-left {
+  width: 20%;
+  max-width: 20rem;
+  display: inline-block;
+   vertical-align:middle;
+}
+
+/* line 87, ../sass/Lesson.scss */
+.panel-right {
+  width: 79%;
+  display: inline-block;
+}
+
+/* line 92, ../sass/Lesson.scss */
+.bookinfo p {
+  color: #416519;
+  font-size: 1.6rem;
+  text-align: center;
+  line-height: 1.2;
+}
+/* line 97, ../sass/Lesson.scss */
+.bookinfo p + p {
+  margin-top: 0.8rem;
+}
+
+/* line 102, ../sass/Lesson.scss */
+.recinfo {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+   vertical-align:middle;
+}
+/* line 108, ../sass/Lesson.scss */
+.recinfo h1 {
+  height: 3.2rem;
+  width: calc((366/79)*3.2rem);
+  background: url("../img/title.png") no-repeat center;
+  background-size: contain;
+  text-indent: -99rem;
+  display:inline-block;
+  vertical-align:middle;
+}
+
+/* line 118, ../sass/Lesson.scss */
+.seachBox {
+  display: inline-block;
+  height: 3.8rem;
+  -moz-border-radius: 1.9rem;
+  -webkit-border-radius: 1.9rem;
+  border-radius: 1.9rem;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RhZWFjNCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzY3YWY2YyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #daeac4), color-stop(100%, #67af6c));
+  background: -moz-linear-gradient(#daeac4, #67af6c);
+  background: -webkit-linear-gradient(#daeac4, #67af6c);
+  background: linear-gradient(#daeac4, #67af6c);
+  border: 0.01rem #67af6c solid;
+  padding: 0 0.95rem;
+  box-sizing: border-box;
+  vertical-align:middle;
+  float:right;
+}
+/* line 127, ../sass/Lesson.scss */
+.seachBox input[type="text"] {
+  height: 1.9rem;
+  padding: 0 1rem;
+  -moz-border-radius: 0.95rem;
+  -webkit-border-radius: 0.95rem;
+  border-radius: 0.95rem;
+  border: 1px #a8bf96 solid;
+  -moz-box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+  box-shadow: inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+  font-size: 1.4rem;
+  vertical-align: middle;
+}
+/* line 135, ../sass/Lesson.scss */
+.seachBox input[type="text"]:focus {
+  -moz-box-shadow: 0 0 0.5rem #adca13, inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+  -webkit-box-shadow: 0 0 0.5rem #adca13, inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+  box-shadow: 0 0 0.5rem #adca13, inset 0 0 0.5rem rgba(0, 0, 0, 0.38);
+}
+/* line 139, ../sass/Lesson.scss */
+.seachBox button {
+  padding: 0;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  border: none;
+  background: url("../img/search.png") no-repeat center;
+  background-size: 70%;
+  height: 3.8rem;
+  width: 3.8rem;
+  -moz-border-radius: 1.9rem;
+  -webkit-border-radius: 1.9rem;
+  border-radius: 1.9rem;
+}
+/* line 149, ../sass/Lesson.scss */
+.seachBox button:active, .seachBox button:hover {
+  opacity: 0.8;
+}
+
+/* line 155, ../sass/Lesson.scss */
+.panel-body {
+  position: relative;
+  height: 98%;
+}
+/* line 158, ../sass/Lesson.scss */
+.panel-body .nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 10rem;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSI1JSIgc3RvcC1jb2xvcj0iI2UzZjE5YyIvPjxzdG9wIG9mZnNldD0iMjAlIiBzdG9wLWNvbG9yPSIjZTVmMWExIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZjRmYWQ4Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(5%, #e3f19c), color-stop(20%, #e5f1a1), color-stop(100%, #f4fad8));
+  background: -moz-linear-gradient(#e3f19c 5%, #e5f1a1 20%, #f4fad8);
+  background: -webkit-linear-gradient(#e3f19c 5%, #e5f1a1 20%, #f4fad8);
+  background: linear-gradient(#e3f19c 5%, #e5f1a1 20%, #f4fad8);
+  -moz-border-radius: 6rem 6rem 50rem 50rem;
+  -webkit-border-radius: 6rem;
+  border-radius: 6rem 6rem 50rem 50rem;
+  -moz-box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5);
+  -webkit-box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5);
+  box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5);
+}
+/* line 166, ../sass/Lesson.scss */
+.panel-body .nav ul {
+  box-sizing: border-box;
+  padding: 4rem 0.8rem;
+  margin: 0.8rem;
+  height: 82%;
+  overflow-y: auto;
+  /*background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y2ZmFkZiIvPjxzdG9wIG9mZnNldD0iMjAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6fadf), color-stop(20%, rgba(255,255, 255,0)));
+  background: -moz-linear-gradient(#f6fadf, rgba(255, 255, 255, 0) 20%);
+  background: -webkit-linear-gradient(#f6fadf, rgba(255, 255, 255, 0) 20%);
+  background: linear-gradient(rgba(246, 250, 223, 0), rgba(255, 255, 255, 0) 20%);*/
+  -moz-border-radius: 1rem 1rem 0 0;
+  -webkit-border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
+}
+/* line 176, ../sass/Lesson.scss */
+.panel-body .nav ul li a {
+  cursor: pointer;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  min-height: 3rem;
+  line-height: 3rem;
+  font-size: 1.6rem;
+  color: #416519;
+  border-top: 0.2rem #ced893 dashed;
+  padding-left: 1rem;
+}
+/* line 188, ../sass/Lesson.scss */
+.panel-body .nav ul li a:before {
+  content: "";
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url("../img/navLi.png") no-repeat center;
+  background-size: 100%;
+  margin-right: 1rem;
+}
+/* line 198, ../sass/Lesson.scss */
+.panel-body .nav ul li:last-child {
+  border-bottom: 0.2rem #ced893 dashed;
+}
+/* line 204, ../sass/Lesson.scss */
+.panel-body .nav ul li.on > a, .panel-body .nav ul li.on:hover > a {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzc5YjY3YyIgc3RvcC1vcGFjaXR5PSIwLjMiLz48c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iIzc5YjY3YyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc5YjY3YyIgc3RvcC1vcGFjaXR5PSIwLjMiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(121, 182, 124, 0.3)), color-stop(25%, #79b67c), color-stop(100%, rgba(121, 182, 124, 0.3)));
+  background: -moz-linear-gradient(left, rgba(121, 182, 124, 0.3), #79b67c 25%, rgba(121, 182, 124, 0.3));
+  background: -webkit-linear-gradient(left, rgba(121, 182, 124, 0.3), #79b67c 25%, rgba(121, 182, 124, 0.3));
+  background: linear-gradient(to right, rgba(121, 182, 124, 0.3), #79b67c 25%, rgba(121, 182, 124, 0.3));
+}
+/* line 210, ../sass/Lesson.scss */
+.panel-body .nav ul li:hover > a {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjIiLz48c3RvcCBvZmZzZXQ9IjMwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjYiLz48c3RvcCBvZmZzZXQ9Ijk1JSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjEiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(30%, rgba(255, 255, 255, 0.6)), color-stop(95%, rgba(255, 255, 255, 0.1)));
+  background: -moz-linear-gradient(left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.1) 95%);
+  background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.1) 95%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6) 30%, rgba(255, 255, 255, 0.1) 95%);
+}
+/* line 216, ../sass/Lesson.scss */
+.panel-body .nav ul li ol li a {
+  padding-left: 2rem;
+}
+/* line 218, ../sass/Lesson.scss */
+.panel-body .nav ul li ol li a:before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  background: url("../img/navLi-li.png") no-repeat center;
+  background-size: 100%;
+}
+/* line 226, ../sass/Lesson.scss */
+.panel-body .nav ul li ol li:last-child {
+  border-bottom: none;
+}
+/* line 233, ../sass/Lesson.scss */
+.panel-body .nav ul > li > a {
+  font-size: 1.8rem;
+}
+/* line 239, ../sass/Lesson.scss */
+.panel-body .container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 10rem;
+  background-color: #fdf4cd;
+  -moz-border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  border-radius: 1rem;
+  -moz-box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5), inset 0 0.5rem 0.3rem 0 rgba(217, 199, 110, 0.5);
+  -webkit-box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5), inset 0 0.5rem 0.3rem 0 rgba(217, 199, 110, 0.5);
+  box-shadow: 0 0 0.4rem 0.3rem rgba(173, 202, 19, 0.5), inset 0 0.5rem 0.3rem 0 rgba(217, 199, 110, 0.5);
+}
+/* line 247, ../sass/Lesson.scss */
+.panel-body .container .tabBox {
+  padding-top: 1.6rem;
+}
+/* line 249, ../sass/Lesson.scss */
+.panel-body .container .tabBox ul {
+  padding: 0 0.5rem;
+}
+/* line 251, ../sass/Lesson.scss */
+.panel-body .container .tabBox ul li {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 1.6rem;
+  font-size: 1.6rem;
+  color: #fff;
+  background: url("../img/type.png") no-repeat;
+  background-size: 100% 100%;
+}
+/* line 263, ../sass/Lesson.scss */
+.panel-body .container .tabBox ul li + li {
+  margin-left: 1rem;
+}
+/* line 266, ../sass/Lesson.scss */
+.panel-body .container .tabBox ul li.on, .panel-body .container .tabBox ul li:hover {
+  color: #603710;
+  background-image: url("../img/type_hover.png");
+}
+/* line 287, ../sass/Lesson.scss */
+.panel-body .container .recList {
+  background-color: #ffffff;
+  position: absolute;
+  top: 5rem;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  overflow-y: auto;
+  -moz-border-radius: 0 0 1rem 1rem;
+  -webkit-border-radius: 0;
+  border-radius: 0 0 1rem 1rem;
+}
+/* line 296, ../sass/Lesson.scss */
+.panel-body .container .recList ul {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+}
+/* line 302, ../sass/Lesson.scss */
+.panel-body .container .recList li {
+  text-align: center;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  margin-left: 2.4%;
+  margin-bottom: 5rem;
+  width: 22%;
+}
+/* line 312, ../sass/Lesson.scss */
+.panel-body .container .recList li .imgBox {
+  padding: 1.6rem 0;
+  width: 100%;
+  display: block;
+  background-color: #f8efcd;
+  -moz-box-shadow: 0 0 0.3rem 0.2rem rgba(182, 164, 143, 0.5);
+  -webkit-box-shadow: 0 0 0.3rem 0.2rem rgba(182, 164, 143, 0.5);
+  box-shadow: 0 0 0.3rem 0.2rem rgba(182, 164, 143, 0.5);
+  margin-bottom: 1rem;
+}
+/* line 319, ../sass/Lesson.scss */
+.panel-body .container .recList li .imgBox img {
+  width: 15.8rem;
+  height: calc((288/384)*15.8rem);
+}
+/* line 324, ../sass/Lesson.scss */
+.panel-body .container .recList li p {
+  color: #4e2d0c;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  height: 3.6rem;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+/* line 334, ../sass/Lesson.scss */
+.panel-body .container .recList li .btnGroup {
+  display: none;
+  position: absolute;
+  bottom: -calc((88/132)*5rem);
+  width: 100%;
+  text-align: center;
+}
+/* line 342, ../sass/Lesson.scss */
+.panel-body .container .recList li .btnGroup .recBtn {
+  cursor: pointer;
+  position: relative;
+  width: 5rem;
+  height: calc((88/132)*5rem);
+  line-height: calc((88/132)*5rem);
+  display: inline-block;
+  background: url("../img/btn.png") no-repeat center;
+  background-size: contain;
+  text-align: center;
+  font-size: 1.4rem;
+  color: #fff;
+}
+/* line 354, ../sass/Lesson.scss */
+.panel-body .container .recList li .btnGroup .recBtn + .recBtn {
+  margin-left: 1rem;
+}
+/* line 358, ../sass/Lesson.scss */
+.panel-body .container .recList li .btnGroup .recBtn.prev:before {
+  content: '预览';
+}
+/* line 363, ../sass/Lesson.scss */
+.panel-body .container .recList li .btnGroup .recBtn.save:before {
+  content: '保存';
+}
+/* line 370, ../sass/Lesson.scss */
+.panel-body .container .recList li:hover .btnGroup {
+  display: block;
+}
+/* line 373, ../sass/Lesson.scss */
+.panel-body .container .recList li:hover .imgBox {
+  -moz-box-shadow: 0 0 0.6rem 0.3rem rgba(186, 173, 229, 0.8);
+  -webkit-box-shadow: 0 0 0.6rem 0.3rem rgba(186, 173, 229, 0.8);
+  box-shadow: 0 0 0.6rem 0.3rem rgba(186, 173, 229, 0.8);
+}
+/* line 379, ../sass/Lesson.scss */
+.panel-body .container .bottomBtn {
+  position: absolute;
+  border: none;
+  display: block;
+  bottom: -1.8rem;
+  right: 0.5rem;
+  width: 6rem;
+  height: calc((98/152)*6rem);
+}
+/* line 387, ../sass/Lesson.scss */
+.panel-body .container .bottomBtn.resizescreen {
+  background: url("../img/full.png") no-repeat center;
+  background-size: contain;
+}
+/* line 390, ../sass/Lesson.scss */
+.panel-body .container .bottomBtn.resizescreen.exitFull {
+  background-image: url("../img/exitfull.png");
+}
+/* line 394, ../sass/Lesson.scss */
+.panel-body .container .bottomBtn.reback {
+  background: url("../img/goback.png") no-repeat center;
+  background-size: contain;
+}
+/* line 398, ../sass/Lesson.scss */
+.panel-body .container .bottomBtn:hover {
+  right: 0.25rem;
+  width: 7rem;
+  height: calc((98/152)*7rem);
+}
+
+/* line 406, ../sass/Lesson.scss */
+.searchBody {
+  margin: 0 0.8rem;
+}
+/* line 408, ../sass/Lesson.scss */
+.searchBody .container {
+  width: 100%;
+  background-color: #faeaa4;
+}
+/* line 411, ../sass/Lesson.scss */
+.searchBody .container .recList {
+  top: 0.8rem;
+  bottom: 4.6rem;
+}
+/* line 414, ../sass/Lesson.scss */
+.searchBody .container .recList table {
+  width: 100%;
+}
+/* line 417, ../sass/Lesson.scss */
+.searchBody .container .recList table thead tr {
+  background-color: #faeaa4;
+}
+/* line 421, ../sass/Lesson.scss */
+.searchBody .container .recList table td,
+.searchBody .container .recList table th {
+  height: 4rem;
+  color: #90521c;
+  font-size: 1.6rem;
+}
+/* line 426, ../sass/Lesson.scss */
+.searchBody .container .recList table td:first-child, .searchBody .container .recList table td:last-child, .searchBody .container .recList table td:nth-last-child(2),
+.searchBody .container .recList table th:first-child,
+.searchBody .container .recList table th:last-child,
+.searchBody .container .recList table th:nth-last-child(2) {
+  text-align: center;
+}
+/* line 433, ../sass/Lesson.scss */
+.searchBody .container .recList table tbody tr:nth-of-type(odd) {
+  background-color: #fdf4cd;
+}
+/* line 436, ../sass/Lesson.scss */
+.searchBody .container .recList table tbody tr:nth-of-type(even) {
+  background-color: #faeaa4;
+}
+/* line 440, ../sass/Lesson.scss */
+.searchBody .container .recList table .btn {
+  display: inline-block;
+  width: 4rem;
+  height: calc((54/97)*4rem);
+  border: none;
+  cursor: pointer;
+  -moz-border-radius: 2rem;
+  -webkit-border-radius: 2rem;
+  border-radius: 2rem;
+}
+/* line 448, ../sass/Lesson.scss */
+.searchBody .container .recList table .btn.btnView {
+  background: url("../img/view.png") no-repeat center;
+  background-size: contain;
+}
+/* line 452, ../sass/Lesson.scss */
+.searchBody .container .recList table .btn.btnSave {
+  background: url("../img/save.png") no-repeat center;
+  background-size: contain;
+}
+/* line 456, ../sass/Lesson.scss */
+.searchBody .container .recList table .btn:hover {
+  background-color: rgba(51, 51, 51, 0.1);
+  -moz-box-shadow: 0 0 0.8rem 0.3rem rgba(51, 51, 51, 0.1);
+  -webkit-box-shadow: 0 0 0.8rem 0.3rem rgba(51, 51, 51, 0.1);
+  box-shadow: 0 0 0.8rem 0.3rem rgba(51, 51, 51, 0.1);
+}
+/* line 462, ../sass/Lesson.scss */
+.container .recList .searchNone {
+  position: absolute;
+  left: 50%;
+  width: 200px;
+  height: 100%;
+  background: url("../img/noneRec.png") no-repeat center;
+  background-size: contain;
+  margin-left:-100px;
+  text-align: center;
+}
+.searchBody .container .recList .searchNone {
+    background-image:url("../img/none.png")
+}
+/* line 471, ../sass/Lesson.scss */
+.searchBody .container .recList .searchNone a {
+  position: absolute;
+  bottom:25%;
+  left:0;
+  color: #a42116;
+  font-size: 1.8rem;
+  width:100%;
+}
+/* line 478, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon {
+  display: inline-block;
+  width: 2rem;
+  height: calc((72/56)*2rem);
+  background: url("../img/defaultS.png") no-repeat center;
+  background-size: contain;
+}
+/* line 486, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.png, .searchBody .container .recList .recIcon.jpg, .searchBody .container .recList .recIcon.jpeg, .searchBody .container .recList .recIcon.gif {
+  background: url("../img/img.png") no-repeat center;
+  background-size: contain;
+}
+/* line 490, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.swf {
+  background: url("../img/flash.png") no-repeat center;
+  background-size: contain;
+}
+.searchBody .container .recList .recIcon.zip,.searchBody .container .recList .recIcon.rar {
+  background: url("../img/zipS.png") no-repeat center;
+  background-size: contain;
+}
+/* line 494, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.mp3, .searchBody .container .recList .recIcon.ogg, .searchBody .container .recList .recIcon.wav {
+  background: url("../img/audio.png") no-repeat center;
+  background-size: contain;
+}
+/* line 498, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.doc, .searchBody .container .recList .recIcon.docx {
+  background: url("../img/wordIcon.png") no-repeat center;
+  background-size: contain;
+  width: calc((246/223)*calc((72/56)*2rem)*0.85);
+}
+/* line 503, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.ppt, .searchBody .container .recList .recIcon.pptx {
+  background: url("../img/pptIcon.png") no-repeat center;
+  background-size: contain;
+  width: calc((246/223)*calc((72/56)*2rem)*0.85);
+}
+/* line 508, ../sass/Lesson.scss */
+.searchBody .container .recList .recIcon.mp4, .searchBody .container .recList .recIcon.flv {
+  background: url("../img/videoIcon.png") no-repeat center;
+  background-size: contain;
+  width: calc((61/65)*calc((72/56)*2rem));
+}
+
+/* line 518, ../sass/Lesson.scss */
+html.fullscreen, html:fullscreen, html:-webkit-full-screen {
+  font-size: 70%;
+}
+/* line 522, ../sass/Lesson.scss */
+html.fullscreen .panelBox, html:fullscreen .panelBox, html:-webkit-full-screen .panelBox {
+  width: 104rem;
+}
+/* line 527, ../sass/Lesson.scss */
+html.fullscreen .panel-body .container .resizescreen, html:fullscreen .panel-body .container .resizescreen, html:-webkit-full-screen .panel-body .container .resizescreen {
+  background-image: url("../img/exitfull.png");
+}
+
+/* line 534, ../sass/Lesson.scss */
+.pagetab {
+  text-align: right;
+  padding-right: 6rem;
+  margin-bottom: 2rem;
+}
+/* line 539, ../sass/Lesson.scss */
+.pagetab .btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-block;
+  border: none;
+  vertical-align: middle;
+}
+/* line 545, ../sass/Lesson.scss */
+.pagetab .btn.prev {
+  margin-right: 0.5rem;
+  background: url(../img/prev.png) no-repeat center;
+  background-size: contain;
+}
+/* line 549, ../sass/Lesson.scss */
+.pagetab .btn.prev:hover {
+  background-image: url(../img/prev_hover.png);
+}
+/* line 553, ../sass/Lesson.scss */
+.pagetab .btn.next {
+  margin-left: 0.5rem;
+  background: url(../img/next.png) no-repeat center;
+  background-size: contain;
+}
+/* line 557, ../sass/Lesson.scss */
+.pagetab .btn.next:hover {
+  background-image: url(../img/next_hover.png);
+}
+/* line 562, ../sass/Lesson.scss */
+.pagetab a {
+  vertical-align: middle;
+  display: inline-block;
+  color: #663300;
+  padding: 0 0.5rem;
+  font-size: 1.6rem;
+}
+/* line 568, ../sass/Lesson.scss */
+.pagetab a.on {
+  color: #cc0000;
+}
+/* line 571, ../sass/Lesson.scss */
+.pagetab a + a {
+  margin-left: 0.5rem;
+}
+
+/* line 576, ../sass/Lesson.scss */
+.backshadow {
+  background-color: rgba(51, 51, 51, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+/* line 583, ../sass/Lesson.scss */
+.backshadow .dialogBox {
+  position: absolute;
+  width: 70rem;
+  height: calc((1763/2030)*70rem);
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: url("../img/dialog.png") no-repeat center;
+  background-size: contain;
+}
+/* line 594, ../sass/Lesson.scss */
+.backshadow .dialogBox .close {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  right: calc(0.0087*70rem);
+  top: calc(0.0087*70rem);
+  width: calc(0.0571*70rem);
+  height: calc(0.0571*70rem);
+  background: url("../img/close.png") no-repeat center;
+  background-size: contain;
+}
+/* line 606, ../sass/Lesson.scss */
+.backshadow .dialogBox .close:hover {
+  background-image: url("../img/close_hover.png");
+}
+/* line 610, ../sass/Lesson.scss */
+.backshadow .dialogBox .dialogContent {
+  position: absolute;
+  background-color: #ffffff;
+  left: calc(0.0335*70rem);
+  right: calc(0.0335*70rem);
+  top: calc((160/2030)*70rem);
+  bottom: calc((186/2030)*70rem);
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: space-around;
+  -moz-border-radius: calc(0.0187*70rem);
+  -webkit-border-radius: calc(0.0187*70rem);
+  border-radius: calc(0.0187*70rem);
+}
+/* line 623, ../sass/Lesson.scss */
+.backshadow .dialogBox .dialogContent img {
+  max-width: 100%;
+  max-height: 100%;
+}
+/* line 627, ../sass/Lesson.scss */
+.backshadow .dialogBox .dialogContent .video {
+  width: 100%;
+  height: 100%;
+}
+/* line 630, ../sass/Lesson.scss */
+.backshadow .dialogBox .dialogContent .video video {
+  width: 100%;
+}
+/* line 636, ../sass/Lesson.scss */
+.backshadow .audioBox {
+  width: 36rem;
+  height: 9rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJmODhjNCIvPjxzdG9wIG9mZnNldD0iNjAlIiBzdG9wLWNvbG9yPSIjYTNjZGU3Ii8+PHN0b3Agb2Zmc2V0PSI4MCUiIHN0b3AtY29sb3I9IiM1N2FjZTUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #2f88c4), color-stop(60%, #a3cde7), color-stop(80%, #57ace5));
+  background: -moz-linear-gradient(left, #2f88c4, #a3cde7 60%, #57ace5 80%);
+  background: -webkit-linear-gradient(left, #2f88c4, #a3cde7 60%, #57ace5 80%);
+  background: linear-gradient(to right, #2f88c4, #a3cde7 60%, #57ace5 80%);
+  border: 1px #ffffff solid;
+  -moz-border-radius: 1.8rem;
+  -webkit-border-radius: 1.8rem;
+  border-radius: 1.8rem;
+}
+/* line 648, ../sass/Lesson.scss */
+.backshadow .audioBox .dialogContent {
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+/* line 654, ../sass/Lesson.scss */
+.backshadow .audioBox .dialogContent audio {
+  position: absolute;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+/* line 660, ../sass/Lesson.scss */
+.backshadow .audioBox .close {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  border: none;
+  padding: 0;
+  right: calc(0.03*36rem);
+  top: calc(0.03*36rem);
+  width: calc(0.04*36rem);
+  height: calc(0.04*36rem);
+  background: url("../img/closeAudio.png") no-repeat center;
+  background-size: contain;
+}
+/* line 672, ../sass/Lesson.scss */
+.backshadow .audioBox .close:hover {
+  background-image: url("../img/closeAudio_hover.png");
+}
+/* line 676, ../sass/Lesson.scss */
+.backshadow .audioBox:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30%;
+  -moz-border-radius: 36rem;
+  -webkit-border-radius: 36rem;
+  border-radius: 36rem;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIyNSUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC42Ii8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIiBzdG9wLW9wYWNpdHk9IjAuMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(25%, rgba(255, 255, 255, 0.6)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0.6) 25%, rgba(0, 0, 0, 0));
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.6) 25%, rgba(0, 0, 0, 0));
+  background: linear-gradient(rgba(255, 255, 255, 0.6) 25%, rgba(0, 0, 0, 0));
+}
+/* line 685, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer {
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+}
+/* line 696, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-bar-played {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JlZmU1ZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzg0ZmQwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #befe5f), color-stop(100%, #84fd0b));
+  background: -moz-linear-gradient(#befe5f, #84fd0b);
+  background: -webkit-linear-gradient(#befe5f, #84fd0b);
+  background: linear-gradient(#befe5f, #84fd0b);
+}
+/* line 699, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-volume-adjust {
+  background: none;
+  box-shadow: none;
+}
+/* line 703, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-volume-adjust div div {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JlZmU1ZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzg0ZmQwYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #befe5f), color-stop(100%, #84fd0b));
+  background: -moz-linear-gradient(#befe5f, #84fd0b);
+  background: -webkit-linear-gradient(#befe5f, #84fd0b);
+  background: linear-gradient(#befe5f, #84fd0b);
+}
+/* line 708, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-bar-loaded, .backshadow .audioBox .audioplayer-volume-adjust > div {
+  background: #225577;
+}
+/* line 711, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-volume-adjust > div {
+  -moz-box-shadow: 0 0 15px rgba(12, 116, 188, 0.8);
+  -webkit-box-shadow: 0 0 15px rgba(12, 116, 188, 0.8);
+  box-shadow: 0 0 15px rgba(12, 116, 188, 0.8);
+}
+/* line 715, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-playpause, .backshadow .audioBox .audioplayer-playpause:hover, .backshadow .audioBox .audioplayer-playpause:focus, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause:hover, .backshadow .audioBox .audioplayer:not(.audioplayer-mini) .audioplayer-playpause:focus, .backshadow .audioBox .audioplayer-volume, .backshadow .audioBox .audioplayer-volume:hover, .backshadow .audioBox .audioplayer-volume:focus {
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzI0YmNmYyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzI0YmNmYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #24bcfc), color-stop(100%, #24bcfc));
+  background: -moz-linear-gradient(#24bcfc, #24bcfc);
+  background: -webkit-linear-gradient(#24bcfc, #24bcfc);
+  background: linear-gradient(#24bcfc, #24bcfc);
+  border: 1px #ffffff solid;
+  -moz-border-radius: 36rem;
+  -webkit-border-radius: 36rem;
+  border-radius: 36rem;
+}
+/* line 721, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-time-current, .backshadow .audioBox .audioplayer-time-duration {
+  border: none;
+}
+/* line 724, ../sass/Lesson.scss */
+.backshadow .audioBox .audioplayer-volume a {
+  filter: none;
+}
